@@ -4,6 +4,7 @@ import urllib
 import csv
 from bs4 import BeautifulSoup
 from datetime import timedelta
+from station_info import stations
 
 # url ex:    "https://e-service.cwb.gov.tw/HistoryDataQuery/DayDataController.do?command=viewMain&station=C0A520&stname=%25E5%25B1%25B1%25E4%25BD%25B3&altitude=48m&datepicker=2022-04-01"
 URL_PREDIX = "https://e-service.cwb.gov.tw/HistoryDataQuery/DayDataController.do?command=viewMain"
@@ -77,10 +78,6 @@ def daterange(start_date, end_date):
         print("daterange err: {}".format(e))
 
 def process(station_code, start_date, end_date, is_merge):
-    import json
-    with open("stations.json", encoding="utf-8-sig") as f:
-        stations = json.load(f)
-
     codes = []
     if station_code == "all":
         codes = list(stations.keys())
@@ -130,3 +127,5 @@ end_date = datetime.datetime.strptime(end_str, DATE_FORMAT)
 is_merge = False if merge_str=='n' else True
 
 process(station_code, start_date, end_date, is_merge)
+
+input("Press ENTER to stop ...")
