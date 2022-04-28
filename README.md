@@ -2,13 +2,12 @@
 
 A simple tool to download CSV files from CWB.
 
-1. Download a specific station's daily report from date_from to date_to.
-```
-python3 html_csv.py --station C0A650 --date_from 2022-04-01 --date_to 2022-04-01
-```
+https://e-service.cwb.gov.tw/HistoryDataQuery/
 
+* Arguments
+  1. station code
+  2. start date
+  3. end date
+  4. merge csv or not
 
-2. Download all daily report from date_from to date_to.
-```
-python3 html_csv.py --date_from 2022-04-01 --date_to 2022-04-01
-```
+* Note: currently we only store ObsTime, WD, and WS to output files.
